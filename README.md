@@ -1,7 +1,21 @@
-# Vue 3 + Vite
+## Esercizio di oggi: Laravel Boolfolio - API (vite-boolfolio)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Continuiamo a lavorare sul codice dei giorni scorsi, ma in una nuova repo.
 
-## Recommended IDE Setup
+L’esercizio di oggi è suddiviso in milestone ed è importante che ne seguiate l’ordine.
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+### Milestone 3
+Iniziamo ad occuparci della parte front-office della nostra applicazione: creiamo un nuovo progetto Vue 3 con Vite e installiamo axios.
+
+Colleghiamo questo progetto ad una repo separata.
+
+### Milestone 4
+Nel componente principale della nostra Vue App facciamo una chiamata API all’endpoint costruito nel progetto Laravel (milestone 1) e recuperiamo tutti i progetti dal nostro back-end.
+
+Stampiamo in console i risultati e verifichiamo di ricevere i dati correttamente.
+
+### Milestone 5
+Creiamo un nuovo componente ProjectCard, che corrisponde ad una card per visualizzare un progetto. Utilizziamo questo componente per visualizzare tutti i progetti ricevuti tramite API.
+
+### Bonus:
+Gestire la paginazione dei risultati.
