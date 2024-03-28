@@ -2,29 +2,39 @@
 import AppHeader from './components/AppHeader.vue';
 import ProjectsList from './components/projects/ProjectsList.vue';
 import AppAlert from './components/AppAlert.vue';
+import BasePagination from './components/BasePagination.vue';
 import axios from 'axios';
-const endpoint = 'http://localhost:8000/api/projects/';
+const defaultEndpoint = 'http://localhost:8000/api/projects/';
 
 export default {
   name: 'Boolfolio',
 
-  data: () => ({ projects: [], isLoading: false, isAlertOpen: false }),
+  data: () => ({
+    projects: {
+      data: [],
+      links: []
+    },
+    isLoading: false,
+    isAlertOpen: false
+  }),
 
-  components: { AppHeader, ProjectsList, AppAlert },
+  components: { AppHeader, ProjectsList, AppAlert, BasePagination },
 
   methods: {
-    fetchProjects() {
+    fetchProjects(endpoint) {
       this.isLoading = true;
-      axios.get(endpoint).then(res => {
-        console.log(res.data);
-        this.projects = res.data;
-        this.isAlertOpen = false;
-      }).catch(err => {
-        console.error(err);
-        this.isAlertOpen = true;
-      }).then(() => {
-        this.isLoading = false;
-      })
+      axios.get(endpoint ?? defaultEndpoint)
+        .then(res => {
+          const { data, links } = res.data;
+
+          this.projects = { data, links };
+          this.isAlertOpen = false;
+        }).catch(err => {
+          console.error(err);
+          this.isAlertOpen = true;
+        }).then(() => {
+          this.isLoading = false;
+        })
     }
   },
 
@@ -44,7 +54,11 @@ export default {
     <AppAlert :show="isAlertOpen" @close="isAlertOpen = false" @retry="fetchProjects" />
 
     <AppLoader v-if="isLoading" />
-    <ProjectsList v-else :projects="projects" />
+
+    <div v-else>
+      <ProjectsList :projects="projects.data" />
+      <BasePagination :links="projects.links" @change-page="fetchProjects" />
+    </div>
 
   </main>
 
