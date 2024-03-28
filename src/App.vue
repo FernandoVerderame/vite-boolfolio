@@ -1,5 +1,6 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
+import ProjectsList from './components/projects/ProjectsList.vue';
 import axios from 'axios';
 const endpoint = 'http://localhost:8000/api/projects/';
 
@@ -8,7 +9,7 @@ export default {
 
   data: () => ({ projects: [] }),
 
-  components: { AppHeader },
+  components: { AppHeader, ProjectsList },
 
   methods: {
     fetchProjects() {
@@ -33,11 +34,7 @@ export default {
   <main class="container pt-4">
     <h1>Boolfolio</h1>
 
-    <ul>
-      <li v-for="project in projects" :key="project.id">
-        <h4>{{ project.title }}</h4>
-      </li>
-    </ul>
+    <ProjectsList :projects="projects" />
 
   </main>
 
