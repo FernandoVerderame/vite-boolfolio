@@ -14,6 +14,8 @@ export default {
 
   <main class="container pt-4">
 
+    <RouterView />
+
   </main>
 
 </template>
