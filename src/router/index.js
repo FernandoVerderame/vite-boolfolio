@@ -13,15 +13,22 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            component: HomePage
+            component: HomePage,
+            name: 'home'
         },
         {
             path: '/contact-us',
-            component: ContactUsPage
+            component: ContactUsPage,
+            name: 'contact-us'
+        },
+        {
+            path: '/not-found',
+            component: NotFoundPage,
+            name: 'not-found'
         },
         {
             path: '/:pathMatch(.*)*',
-            component: NotFoundPage
+            redirect: 'not-found'
         }
     ]
 });
