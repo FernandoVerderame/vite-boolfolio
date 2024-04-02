@@ -1,10 +1,16 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
-const defaultEndpoint = 'http://localhost:8000/api/projects/';
+import AppLoader from './components/AppLoader.vue';
+import { store } from './data/store';
 
 export default {
   name: 'Boolfolio',
-  components: { AppHeader }
+
+  data: () => ({
+    store
+  }),
+
+  components: { AppHeader, AppLoader }
 }
 </script>
 
@@ -13,6 +19,8 @@ export default {
   <AppHeader />
 
   <main class="container">
+
+    <AppLoader v-if="store.isLoading" />
 
     <RouterView />
 

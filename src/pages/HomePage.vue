@@ -1,4 +1,5 @@
 <script>
+import { store } from '../data/store';
 import ProjectsList from '../components/projects/ProjectsList.vue';
 import AppAlert from '../components/AppAlert.vue';
 import BasePagination from '../components/BasePagination.vue';
@@ -9,11 +10,11 @@ export default {
     name: 'HomePage',
 
     data: () => ({
+        store,
         projects: {
             data: [],
             links: []
         },
-        isLoading: false,
         isAlertOpen: false
     }),
 
@@ -21,7 +22,7 @@ export default {
 
     methods: {
         fetchProjects(endpoint) {
-            this.isLoading = true;
+            store.isLoading = true;
             axios.get(endpoint ?? defaultEndpoint)
                 .then(res => {
                     const { data, links } = res.data;
@@ -32,7 +33,7 @@ export default {
                     console.error(err);
                     this.isAlertOpen = true;
                 }).then(() => {
-                    this.isLoading = false;
+                    store.isLoading = false;
                 })
         }
     },
@@ -49,9 +50,7 @@ export default {
 
     <AppAlert :show="isAlertOpen" @close="isAlertOpen = false" @retry="fetchProjects" />
 
-    <AppLoader v-if="isLoading" />
-
-    <div v-else>
+    <div v-if="!store.isLoading">
         <ProjectsList :projects="projects.data" />
         <BasePagination :links="projects.links" @change-page="fetchProjects" />
     </div>
