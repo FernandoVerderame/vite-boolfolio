@@ -3,7 +3,8 @@ export default {
     name: 'ProjectCard',
 
     props: {
-        project: Object
+        project: Object,
+        isDetail: Boolean
     },
 
     computed: {
@@ -37,9 +38,10 @@ export default {
                 style="height: 100px;">
             <div class="card-body">
                 <h5 class="card-title">{{ project.title }}</h5>
-                <p class="card-text">{{ abstract }}</p>
+                <p class="card-text">{{ isDetail ? project.description : abstract }}</p>
                 <div>Created on {{ pubblicationDate }}</div>
-                <RouterLink :to="{ name: 'project-detail', params: { id: project.id } }" class="btn btn-sm btn-primary">
+                <RouterLink v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
+                    class="btn btn-sm btn-primary">
                     Show</RouterLink>
             </div>
         </div>
