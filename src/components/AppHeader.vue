@@ -16,7 +16,10 @@ export default {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <RouterLink class="nav-link" to="/">Home</RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink class="nav-link" to="/contact-us">Contact Us</RouterLink>
                         </li>
                     </ul>
                 </div>
