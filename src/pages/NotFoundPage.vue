@@ -7,6 +7,7 @@ export default {
 <template>
     <div class="not-found">
         <h3>404 | Page Not Found</h3>
+        <button class="btn btn-secondary" @click="$router.back()">Come Back</button>
     </div>
 </template>
 
@@ -14,6 +15,7 @@ export default {
 .not-found {
     height: calc(100vh - 60px);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
