@@ -39,7 +39,8 @@ export default {
                 <h5 class="card-title">{{ project.title }}</h5>
                 <p class="card-text">{{ abstract }}</p>
                 <div>Created on {{ pubblicationDate }}</div>
-                <a href="#" class="btn btn-sm btn-primary">Show</a>
+                <RouterLink :to="{ name: 'project-detail', params: { id: project.id } }" class="btn btn-sm btn-primary">
+                    Show</RouterLink>
             </div>
         </div>
     </div>
