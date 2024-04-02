@@ -1,11 +1,41 @@
 <script>
+import axios from 'axios';
+import AppLoader from '../components/AppLoader.vue';
+import ProjectCard from '../components/projects/ProjectCard.vue';
+const defaultEndpoint = 'http://localhost:8000/api/projects/';
+
 export default {
-    name: 'ProjectDetailPage'
+    name: 'ProjectDetailPage',
+
+    components: { ProjectCard, AppLoader },
+
+    data: () => ({
+        project: null,
+        isLoading: false
+    }),
+
+    methods: {
+        getProject() {
+            this.isLoading = true;
+            axios.get(defaultEndpoint + this.$route.params.id)
+                .then(res => { this.project = res.data; })
+                .catch(err => { console.error(err.message) })
+                .then(() => { this.isLoading = false; })
+        }
+    },
+
+    created() {
+        this.getProject();
+    }
 }
 </script>
 
 <template>
-    <h1>Project Detail</h1>
+
+    <AppLoader v-if="isLoading && !project" />
+
+    <ProjectCard v-if="!isLoading && project" :project="project" />
+
 </template>
 
 <style></style>
