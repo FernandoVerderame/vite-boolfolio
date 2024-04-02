@@ -40,7 +40,7 @@ export default {
                 <h5 class="card-title">{{ project.title }}</h5>
                 <p class="card-text">{{ isDetail ? project.description : abstract }}</p>
                 <div>Created on {{ pubblicationDate }}</div>
-                <RouterLink v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
+                <RouterLink v-if="!isDetail" :to="{ name: 'project-detail', params: { slug: project.slug } }"
                     class="btn btn-sm btn-primary">
                     Show</RouterLink>
             </div>
