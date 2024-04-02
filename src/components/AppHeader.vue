@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-    <header class="">
+    <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Boolfolio</a>
@@ -28,4 +28,8 @@ export default {
     </header>
 </template>
 
-<style></style>
+<style>
+header {
+    height: 60px;
+}
+</style>

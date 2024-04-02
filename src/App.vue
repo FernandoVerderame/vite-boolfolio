@@ -12,7 +12,7 @@ export default {
 
   <AppHeader />
 
-  <main class="container pt-4">
+  <main class="container">
 
     <RouterView />
 
