@@ -33,15 +33,15 @@ export default {
 
 <template>
     <div class="col">
-        <div class="card m-5">
+        <div class="card m-5 text-center">
             <img v-if="project.image" :src="project.image" :alt="project.title" class="card-img-top"
                 style="height: 100px;">
             <div class="card-body">
-                <h5 class="card-title">{{ project.title }}</h5>
+                <h5 class="card-title mb-0">{{ project.title }}</h5>
 
                 <!-- Type -->
                 <RouterLink v-if="project.type" :to="{ name: 'type-projects', params: { slug: project.type.slug } }">
-                    <div v-if="project.type" class="badge mb-2" :style="{ backgroundColor: project.type.color }">
+                    <div v-if="project.type" class="badge my-3" :style="{ backgroundColor: project.type.color }">
                         {{ project.type.label }}
                     </div>
                 </RouterLink>
@@ -56,10 +56,13 @@ export default {
                         </li>
                     </RouterLink>
                 </ul>
-                <div>Created on {{ pubblicationDate }}</div>
-                <RouterLink v-if="!isDetail" :to="{ name: 'project-detail', params: { slug: project.slug } }"
-                    class="btn btn-sm btn-primary">
-                    Show</RouterLink>
+                <div class="create-date">Created on {{ pubblicationDate }}</div>
+                <div class="d-flex justify-content-center">
+                    <RouterLink v-if="!isDetail" :to="{ name: 'project-detail', params: { slug: project.slug } }"
+                        class="btn btn-primary">
+                        Show
+                    </RouterLink>
+                </div>
             </div>
         </div>
     </div>
@@ -76,5 +79,10 @@ ul {
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+.create-date {
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 </style>
