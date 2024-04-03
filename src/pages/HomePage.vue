@@ -46,7 +46,7 @@ export default {
 
 <template>
 
-    <h1>Boolfolio</h1>
+    <h1 class="mt-5 text-center">Boolfolio</h1>
 
     <AppAlert :show="isAlertOpen" @close="isAlertOpen = false" @retry="fetchProjects" />
 

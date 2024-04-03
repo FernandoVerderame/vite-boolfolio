@@ -44,7 +44,7 @@ export default {
 <template>
 
     <div v-show="!store.isLoading">
-        <h2>{{ typeLabel }} Projects</h2>
+        <h2 class="mt-5 text-center">{{ typeLabel }} Projects</h2>
         <ProjectsList :projects="projects" />
     </div>
 
