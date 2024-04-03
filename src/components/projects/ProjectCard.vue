@@ -46,11 +46,17 @@ export default {
                     </div>
                 </RouterLink>
                 <p class="card-text">{{ isDetail ? project.description : abstract }}</p>
+
+                <!-- Technology -->
                 <ul v-if="project.technologies?.length">
-                    <li v-for="technology in project.technologies" :key="technology.id"
-                        :style="{ color: technology.color }">
-                        <i :class="`${technology.icon}`">{{ technology.label }}</i>
-                    </li>
+                    <RouterLink v-for="technology in project.technologies" :key="technology.id"
+                        :to="{ name: 'technology-projects', params: { slug: technology.slug } }">
+                        <li :style="{ color: technology.color }">
+                            <i :class="`${technology.icon}`">
+                                {{ technology.label }}
+                            </i>
+                        </li>
+                    </RouterLink>
                 </ul>
                 <div>Created on {{ pubblicationDate }}</div>
                 <RouterLink v-if="!isDetail" :to="{ name: 'project-detail', params: { slug: project.slug } }"
