@@ -9,7 +9,7 @@ export default {
 
     computed: {
         abstract() {
-            const abstract = this.project.description.slice(0, 200);
+            const abstract = this.project.description.slice(0, 100);
             return abstract + '...';
         },
 
@@ -52,9 +52,7 @@ export default {
                     <RouterLink v-for="technology in project.technologies" :key="technology.id"
                         :to="{ name: 'technology-projects', params: { slug: technology.slug } }">
                         <li :style="{ color: technology.color }">
-                            <i :class="`${technology.icon}`">
-                                {{ technology.label }}
-                            </i>
+                            <FontAwesomeIcon :icon="`${technology.icon}`" class="h3 mb-0" />
                         </li>
                     </RouterLink>
                 </ul>
@@ -67,15 +65,16 @@ export default {
     </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
 ul {
     list-style: none;
-    margin-bottom: 10px;
+    margin: 20px 0;
     padding: 0;
 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    gap: 20px;
 }
 </style>
