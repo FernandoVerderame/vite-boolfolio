@@ -12,7 +12,7 @@ export default {
 
 <template>
     <nav>
-        <ul class="pagination">
+        <ul class="pagination d-flex justify-content-center mt-5">
             <li v-for="link in links" :key="link.label" class="page-item"
                 :class="{ 'active': link.active, 'disabled': !link.url }">
 
