@@ -60,10 +60,11 @@ export default {
 <style>
 ul {
     list-style: none;
-    margin: 0;
+    margin-bottom: 10px;
     padding: 0;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
 }
