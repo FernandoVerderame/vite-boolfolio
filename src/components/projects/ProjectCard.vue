@@ -38,9 +38,13 @@ export default {
                 style="height: 100px;">
             <div class="card-body">
                 <h5 class="card-title">{{ project.title }}</h5>
-                <div v-if="project.type" class="badge mb-2" :style="{ backgroundColor: project.type.color }">{{
-                project.type.label }}
-                </div>
+
+                <!-- Type -->
+                <RouterLink v-if="project.type" :to="{ name: 'type-projects', params: { slug: project.type.slug } }">
+                    <div v-if="project.type" class="badge mb-2" :style="{ backgroundColor: project.type.color }">
+                        {{ project.type.label }}
+                    </div>
+                </RouterLink>
                 <p class="card-text">{{ isDetail ? project.description : abstract }}</p>
                 <ul v-if="project.technologies?.length">
                     <li v-for="technology in project.technologies" :key="technology.id"
